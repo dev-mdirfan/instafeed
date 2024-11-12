@@ -1,5 +1,6 @@
 import React from 'react';
-import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
+import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
+import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
     return (
@@ -65,24 +66,49 @@ const Navbar = () => {
                                     src="/logo.png"
                                     alt="Your Company"
                                 />
-                                <div className='text-3xl text-white mx-3'>Instafeed</div>
+                                <div className="text-3xl text-white mx-3">
+                                    Instafeed
+                                </div>
                             </div>
                             <div className="hidden sm:ml-6 sm:block">
                                 <div className="flex space-x-4">
                                     {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
-                                    <a
-                                        href="#"
-                                        className="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white"
-                                        aria-current="page"
+                                    <NavLink
+                                        to="/"
+                                        className={({ isActive, isPending }) =>
+                                            isPending
+                                                ? ''
+                                                : isActive
+                                                ? 'rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white'
+                                                : 'rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
+                                        }
                                     >
                                         Home
-                                    </a>
-                                    <a
-                                        href="#"
-                                        className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                                    </NavLink>
+                                    <NavLink
+                                        to="/top"
+                                        className={({ isActive, isPending }) =>
+                                            isPending
+                                                ? ''
+                                                : isActive
+                                                ? 'rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white'
+                                                : 'rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
+                                        }
+                                    >
+                                        Top Headlines
+                                    </NavLink>
+                                    <NavLink
+                                        to="/about"
+                                        className={({ isActive, isPending }) =>
+                                            isPending
+                                                ? ''
+                                                : isActive
+                                                ? 'rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white'
+                                                : 'rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
+                                        }
                                     >
                                         About
-                                    </a>
+                                    </NavLink>
                                 </div>
                             </div>
                         </div>

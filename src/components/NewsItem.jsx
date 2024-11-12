@@ -1,13 +1,27 @@
 import React from 'react';
 
-const NewsItem = ({articles}) => {
+const NewsItem = ({ articles }) => {
     let title = articles.title;
     let description = articles.description;
     let image = articles.urlToImage;
+    let url = articles.url;
     let date = articles.publishedAt;
     let source = articles.source.name;
-    let url = articles.url;
-    // console.log(articles);
+
+    // Function to format the date
+    const formatDate = (dateString) => {
+        const options = {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true,
+        };
+        return new Date(dateString).toLocaleDateString('en-US', options);
+    };
+    date = formatDate(date);
+
     return (
         <>
             <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
@@ -27,13 +41,15 @@ const NewsItem = ({articles}) => {
                         <p className="text-gray-500 dark:text-gray-400">
                             {date}
                         </p>
-                        <span class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">{source}</span>
+                        <span className="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">
+                            {source}
+                        </span>
                     </div>
 
                     <a
                         href={url}
                         className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                        target='_blank'
+                        target="_blank"
                     >
                         Read more
                         <svg
